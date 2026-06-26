@@ -1,99 +1,255 @@
-# 🍕 FastAPI Food Delivery App (QuickBite)
+# 🍕 QuickBite | Food Delivery Backend API with FastAPI
 
-A complete backend system built using **FastAPI** as part of the **Innomatics Research Labs Internship (GenAI Track)**.  
-This project simulates a real-world food delivery backend with full API functionality including menu management, order processing, cart system, and advanced search features.
+> **A RESTful backend application built with FastAPI that simulates a real-world food delivery platform, featuring menu management, cart operations, order processing, search, sorting, pagination, and complete CRUD functionality.**
 
-## 🚀 Project Overview
+![Python](https://img.shields.io/badge/Python-3.x-blue?logo=python)
+![FastAPI](https://img.shields.io/badge/FastAPI-REST%20API-009688?logo=fastapi)
+![Pydantic](https://img.shields.io/badge/Pydantic-Validation-E92063)
+![Uvicorn](https://img.shields.io/badge/Uvicorn-ASGI%20Server-499848)
+![Swagger](https://img.shields.io/badge/Swagger-API%20Documentation-85EA2D?logo=swagger)
 
-This project demonstrates how a modern backend system works using FastAPI. It is designed to handle real-world food delivery operations such as:
+---
 
-- Managing restaurant menu items
-- Placing and tracking customer orders
-- Cart management with checkout workflow
-- Searching, sorting, and filtering data
-- Pagination and combined query handling
-- Full CRUD (Create, Read, Update, Delete) operations
+## 📖 Project Overview
 
-The project also follows proper API structuring, validation using Pydantic, and modular helper functions.
+Modern food delivery platforms rely on robust backend systems to efficiently manage menus, customer orders, shopping carts, and business operations. Building scalable APIs is essential for delivering fast, reliable, and maintainable services.
 
-## 🛠 Tech Stack
+**QuickBite** is a RESTful backend application developed using **FastAPI**, designed to simulate the core functionalities of a food delivery system. The project demonstrates backend development concepts including API design, request validation, CRUD operations, modular architecture, and automatic API documentation.
 
-- **Python 3**
-- **FastAPI**
-- **Pydantic** (for data validation)
-- **Uvicorn** (ASGI server)
-- **REST API architecture**
+The application provides a complete backend workflow for menu management, order processing, shopping cart operations, advanced searching, sorting, and pagination.
 
-## 📌 Features Implemented
+---
 
-### 🔹 1. Basic APIs
-- `GET /` → Welcome message
-- `GET /menu` → Fetch all menu items
-- `GET /menu/{item_id}` → Get single item by ID
-- `GET /menu/summary` → Menu statistics (total, available, categories)
+## 🎯 Project Objectives
 
-### 🔹 2. Order Management
-- `POST /orders` → Create new order with validation
-- `GET /orders` → View all orders
-- `GET /orders/search` → Search orders by customer name
-- `GET /orders/sort` → Sort orders by total price
+* Develop RESTful APIs using FastAPI
+* Implement complete CRUD operations
+* Validate request and response data using Pydantic
+* Design modular backend workflows
+* Handle search, sorting, filtering, and pagination
+* Demonstrate modern backend development practices
 
-### 🔹 3. Cart System
-- `POST /cart/add` → Add items to cart with quantity handling
-- `GET /cart` → View cart with grand total
-- `POST /cart/checkout` → Convert cart items into confirmed orders
+---
 
-### 🔹 4. Menu Management (CRUD Operations)
-- `POST /menu` → Add new menu item (with duplicate check)
-- `PUT /menu/{item_id}` → Update price or availability
-- `DELETE /menu/{item_id}` → Delete menu item
+## ✨ Key Features
 
-### 🔹 5. Advanced Features
-- `GET /menu/search` → Search items by keyword
-- `GET /menu/sort` → Sort menu by price/name/category
-- `GET /menu/page` → Pagination support
-- `GET /menu/browse` → Combined search + sort + pagination
+### 🍽️ Menu Management
+
+* Add new menu items
+* Update existing items
+* Delete menu items
+* View complete menu
+* Duplicate item validation
+
+### 🛒 Cart System
+
+* Add products to cart
+* Quantity management
+* Calculate cart total
+* Checkout workflow
+
+### 📦 Order Management
+
+* Create customer orders
+* Retrieve all orders
+* Search customer orders
+* Sort orders by total price
+
+### 🔍 Advanced Search
+
+* Keyword search
+* Sorting by multiple fields
+* Pagination
+* Combined filtering and browsing
+
+### 📑 API Documentation
+
+* Interactive Swagger UI
+* Automatic endpoint documentation
+* Request validation
+* Response schemas
+
+---
+
+## 🏗️ System Architecture
+
+```text
+Client (Browser / Postman)
+            │
+            ▼
+      FastAPI Application
+            │
+ ┌──────────┼──────────┐
+ │          │          │
+ ▼          ▼          ▼
+Menu API  Cart API  Order API
+            │
+            ▼
+ Business Logic Layer
+            │
+            ▼
+In-Memory Data Storage
+```
+
+---
+
+## 📌 REST API Endpoints
+
+## Home
+
+| Method | Endpoint | Description     |
+| ------ | -------- | --------------- |
+| GET    | `/`      | Welcome message |
+
+### Menu
+
+| Method | Endpoint          | Description                |
+| ------ | ----------------- | -------------------------- |
+| GET    | `/menu`           | Retrieve all menu items    |
+| GET    | `/menu/{item_id}` | Retrieve a menu item by ID |
+| POST   | `/menu`           | Add a new menu item        |
+| PUT    | `/menu/{item_id}` | Update a menu item         |
+| DELETE | `/menu/{item_id}` | Delete a menu item         |
+| GET    | `/menu/search`    | Search menu items          |
+| GET    | `/menu/sort`      | Sort menu items            |
+| GET    | `/menu/page`      | Paginate menu items        |
+| GET    | `/menu/browse`    | Search + Sort + Pagination |
+| GET    | `/menu/summary`   | Menu statistics            |
+
+### Orders
+
+| Method | Endpoint         | Description          |
+| ------ | ---------------- | -------------------- |
+| POST   | `/orders`        | Create a new order   |
+| GET    | `/orders`        | Retrieve all orders  |
+| GET    | `/orders/search` | Search orders        |
+| GET    | `/orders/sort`   | Sort customer orders |
+
+### Cart
+
+| Method | Endpoint         | Description        |
+| ------ | ---------------- | ------------------ |
+| POST   | `/cart/add`      | Add item to cart   |
+| GET    | `/cart`          | View shopping cart |
+| POST   | `/cart/checkout` | Checkout cart      |
+
+---
+
+## 🛠️ Technology Stack
+
+| Category          | Technologies |
+| ----------------- | ------------ |
+| Programming       | Python       |
+| Backend Framework | FastAPI      |
+| Data Validation   | Pydantic     |
+| ASGI Server       | Uvicorn      |
+| API Documentation | Swagger UI   |
+| Architecture      | RESTful APIs |
+
+---
 
 ## 📂 Project Structure
-```
-Food Delivery App/
+
+```text
+QuickBite/
 │
-├── main.py # FastAPI backend code
-├── requirements.txt # Project dependencies
-├── README.md # Project documentation
-└── pycache/ # Python cache files
+├── main.py
+├── requirements.txt
+├── README.md
+└── __pycache__/
 ```
 
-## ▶️ How to Run This Project
+---
 
-### 1. Install dependencies
+## 🚀 Getting Started
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/pranjalsalvi/quickbite-fastapi-food-delivery.git
+
+cd quickbite-fastapi-food-delivery
 ```
+
+### Install Dependencies
+
+```bash
 pip install -r requirements.txt
 ```
-### 2. Run FastAPI server  
-```
+
+### Run the Application
+
+```bash
 uvicorn main:app --reload
 ```
-### 3. Open API documentation  
-http://127.0.0.1:8000/docs  
 
-## 🧪 API Testing
+The application will be available at:
 
-All endpoints are tested using Swagger UI (/docs).
-You can directly:
-Send requests
-View responses
-Test CRUD operations in real time
+```text
+http://127.0.0.1:8000
+```
 
-## 📌 Key Learning Outcomes
-- Building REST APIs using FastAPI
-- Working with Pydantic validation models
-- Implementing CRUD operations
-- Designing real-world backend workflows
-- Handling query parameters and path variables
-- API testing using Swagger UI
+---
 
+## 💡 Key Highlights
 
-## 👨‍💻 Author
-Pranjal Salvi  
-GenAI Internship - Innomatics Research Labs  
+* RESTful API development with FastAPI
+* Full CRUD operations
+* Request validation using Pydantic
+* Interactive Swagger documentation
+* Cart and checkout workflow
+* Order management system
+* Search, sorting, and pagination
+* Clean and modular backend architecture
+
+---
+
+## 📌 Applications
+
+This backend architecture can be adapted for:
+
+* Food Delivery Platforms
+* Restaurant Management Systems
+* E-commerce Applications
+* Inventory Management
+* Online Ordering Systems
+* Retail Backend Services
+
+---
+
+## 🚀 Future Enhancements
+
+* Database integration with PostgreSQL or MySQL
+* SQLAlchemy ORM support
+* JWT-based authentication
+* Role-based authorization
+* Payment gateway integration
+* Docker containerization
+* Redis caching
+* Cloud deployment (AWS, Azure, or Render)
+* Unit and integration testing with Pytest
+
+---
+
+## 👨‍💻 About Me
+
+**Pranjal Salvi**
+
+Aspiring **Data Analyst & AI Engineer** with a strong interest in Backend Development, Data Analytics, Machine Learning, and Generative AI.
+
+### Connect with me
+
+* 🔗 LinkedIn: https://www.linkedin.com/in/pranjal-salvi-380732227/
+* 💻 GitHub: https://github.com/pranjalsalvi
+
+---
+
+## ⭐ Support
+
+If you found this project useful or interesting, consider giving it a ⭐ on GitHub.
+
+Your support motivates me to continue building and sharing open-source projects in Backend Development, Data Science, and AI.
+
+---
+
+### Thank you for visiting this repository! 🚀
